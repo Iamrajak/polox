@@ -4,6 +4,8 @@ import { Inter } from 'next/font/google';
 import { GraveyardProvider } from '@/contexts/GraveyardContext';
 import { AuthProvider } from '@/contexts/AuthContext';
 import { BurialRecordProvider } from '@/contexts/BurialRecordContext';
+import { FinanceProvider } from '@/contexts/FinanceContext';
+import { MapProvider } from '@/contexts/MapContext';
 import Sidebar from '@/components/Sidebar';
 import LayoutContent from '@/components/LayoutContent';
 
@@ -25,9 +27,13 @@ export default function RootLayout({
         <AuthProvider>
           <GraveyardProvider>
             <BurialRecordProvider>
-              <LayoutContent>
-                {children}
-              </LayoutContent>
+              <FinanceProvider>
+                <MapProvider>
+                  <LayoutContent>
+                    {children}
+                  </LayoutContent>
+                </MapProvider>
+              </FinanceProvider>
             </BurialRecordProvider>
           </GraveyardProvider>
         </AuthProvider>
